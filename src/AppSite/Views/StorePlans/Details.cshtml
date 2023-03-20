@@ -1,0 +1,55 @@
+﻿@model AppSite.ViewModels.StorePlanViewModel
+
+@{
+    ViewData["Title"] = "Planos | Detalhes";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Planos</h3>
+            </div>
+        </div>
+        <br />
+        <div class="clearfix" style="margin-top:2em;margin-bottom:1em"><hr></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Planos | Detalhes</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Name">
+                                    <label asp-for="Name" class="control-label "></label>
+                                </label>
+                                <div class="col-md-11 col-sm-11 ">
+                                    <input asp-for="Name" class="form-control" disabled />
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Active">
+                                    <label asp-for="Active" class="control-label"></label>
+                                </label>
+                                <div class="col-md-1 col-sm-1 form-control border-0 ">
+                                    <input asp-for="Active" class="flat " disabled />
+                                </div>
+                            </div>
+                            <div class="form-group pull-right">
+                                <a class="btn btn-secondary" asp-action="Index"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary" title="Editar"> <i class="fa fa-edit"></i> Editar </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

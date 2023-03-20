@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AppSite.ViewModels.StorePlanViewModel>
+
+@{
+    ViewData["Title"] = "Planos | Lista";
+}
+
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Planos</h3>
+            </div>
+        </div>
+        <br />
+        <div class="clearfix" style="margin-top:2em;margin-bottom:1em"><hr></div>
+        <div class="col-md-12 col-sm-12  ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Planos | Lista</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+
+                        <li>
+                            <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <table class="table table-striped jambo_table ">
+                        <thead class="">
+                            <tr class="headings">
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    <span>@Html.DisplayNameFor(model => model.Active)</span>
+                                </th>
+                                <th>
+                                    Qtd. Lojas
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="even pointer">
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @if (@item.Active)
+                                        {
+                                            <input type="checkbox" class="flat" readonly="readonly" checked>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" class="flat" readonly="readonly">
+                                        }
+                                    </td>
+                                    <td>
+                                        @{
+                                            var totalLojas = item.Stores == null? 0 : item.Stores.Count();
+                                            <span>@totalLojas</span>
+                                        }
+                                        @*@Html.DisplayFor(modelItem => item.Active)*@
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Editar"> <i class="fa fa-edit"></i> </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm  btn-info" title="Detalhes"><i class="fa fa-sticky-note"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm  btn-danger" title="Excluir"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

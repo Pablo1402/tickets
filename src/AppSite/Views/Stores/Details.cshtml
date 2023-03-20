@@ -1,0 +1,85 @@
+﻿@model AppSite.ViewModels.StoreViewModel
+
+@{
+    ViewData["Title"] = "Lojas | Detalhes";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Lojas</h3>
+            </div>
+        </div>
+        <br />
+        <div class="clearfix" style="margin-top:2em;margin-bottom:1em"><hr></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Lojas | Detalhes</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 " asp-for="Name">
+                                <label asp-for="Name" class="control-label "></label>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <input asp-for="Name" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 " asp-for="Email">
+                                <label asp-for="Email" class="control-label "></label>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <input asp-for="Email" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 " asp-for="Image">
+                                <label asp-for="Image" class="control-label "></label>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <input asp-for="Image" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 " asp-for="Active">
+                                <label asp-for="Active" class="control-label"></label>
+                            </label>
+                            <div class="col-md-1 col-sm-1 form-control border-0 ">
+                                <input asp-for="Active" class="flat " disabled />
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 " asp-for="StorePlanId">
+                                <label asp-for="StorePlanId" class="control-label"></label>
+                            </label>
+                            <div class="col-md-11 col-sm-11 form-control border-0 ">
+                                <input asp-for="StorePlan.Name" class="form-control" readonly />
+                                <span asp-validation-for="StorePlanId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group pull-right">
+                            <a class="btn btn-secondary" asp-action="Index"><i class="fa fa-arrow-left"></i> Voltar</a>
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary" title="Editar"> <i class="fa fa-edit"></i> Editar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
