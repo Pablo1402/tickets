@@ -1,11 +1,19 @@
 using AppSite.Config;
 using Data.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Auth/Login");
+        options.AccessDeniedPath = new PathString("/Home/Index");
+    });
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -17,12 +25,12 @@ builder.Services.AddDbContext<TicketupContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddHttpContextAccessor();
+
 //builder.Services.AddDbContext<TicketupContext>(opt => opt.UseInMemoryDatabase("Database"));
 
 //IoC
 IoCConfiguration.Configure(builder.Services);
-
-
 
 var app = builder.Build();
 
@@ -45,6 +53,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always
+});
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

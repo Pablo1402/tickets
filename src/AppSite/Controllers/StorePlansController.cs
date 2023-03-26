@@ -48,7 +48,7 @@ namespace AppSite.Controllers
 
             var storeplan = _mapper.Map<StorePlan>(storePlanViewModel);
             await _repo.Create(storeplan);
-        
+            TempData["success"] = "Plano salvo com sucesso";
             return RedirectToAction(nameof(Index));
         }
 
@@ -71,7 +71,8 @@ namespace AppSite.Controllers
                 return View(storePlanViewModel);
 
             await _repo.Update(_mapper.Map<StorePlan>(storePlanViewModel));
-            
+
+            TempData["success"] = "Plano alterado com sucesso";
             return RedirectToAction(nameof(Index));
 
             
@@ -96,6 +97,7 @@ namespace AppSite.Controllers
             if (storePlan != null)
                 await _repo.Delete(storePlan);
 
+            TempData["success"] = "Plano removido com sucesso";
             return RedirectToAction(nameof(Index));
         }
 

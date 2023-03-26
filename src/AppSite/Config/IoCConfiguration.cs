@@ -1,4 +1,5 @@
-﻿using Business.Repositories;
+﻿using AppSite.Helpers;
+using Business.Repositories;
 using Data.Repository;
 
 namespace AppSite.Config
@@ -9,6 +10,12 @@ namespace AppSite.Config
         {
             services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddScoped<IStorePlanRepository, StorePlanRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+
+
+
+            services.AddTransient<ICookieService, CookieService>();
             return services;
 
         }
