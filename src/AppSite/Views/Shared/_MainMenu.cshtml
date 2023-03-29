@@ -1,7 +1,7 @@
 ﻿<div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-ticket"></i> <span>Ticket Up!</span></a>
+            <a href="/" class="site_title"><i class="fa fa-ticket"></i> <span>Ticket Up!</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -12,8 +12,8 @@
                 <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Bom vindo,</span>
-                <h2>Pablo Barreto</h2>
+                <p>Loja</p>
+                <h2>@User?.Claims.FirstOrDefault(x => x.Type == "StoreName")?.Value</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->

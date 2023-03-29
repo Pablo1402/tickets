@@ -20,7 +20,7 @@ namespace AppSite.Controllers
             return View();
         }
 
-        [Authorize(Roles ="ADMIN")]
+        [Authorize(Roles ="SYSTEM")]
         public IActionResult Privacy()
         {
             return View();

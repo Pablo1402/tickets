@@ -28,6 +28,8 @@ namespace AppSite.Helpers
             claims.Add(new Claim(ClaimTypes.Name, user.Name));
             claims.Add(new Claim(ClaimTypes.Role, user.UserType.Name));
             claims.Add(new Claim("Id", user.Id.ToString()));
+            claims.Add(new Claim("StoreId", user.StoreId.ToString()));
+            claims.Add(new Claim("StoreName", user.Store.Name.ToString()));
 
             var claimsIdentity =
                 new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme));

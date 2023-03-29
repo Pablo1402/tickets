@@ -15,7 +15,7 @@ namespace Data.Repository
         }
         public async Task<User> GetByLogin(string login)
         {
-            return await _context.Users.Include(x => x.UserType).FirstOrDefaultAsync(x => x.Login == login);
+            return await _context.Users.Include(x => x.UserType).Include(x => x.Store).FirstOrDefaultAsync(x => x.Login == login);
         }
     }
 }
