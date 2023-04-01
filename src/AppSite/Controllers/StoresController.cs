@@ -1,7 +1,7 @@
 ﻿using AppSite.ViewModels;
 using AutoMapper;
 using Business.Entities;
-using Business.Repositories;
+using Business.Interfaces.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

@@ -9,7 +9,8 @@ namespace AppSite.Config
         public AutoMapperConfiguration()
         {
             CreateMap<Store, StoreViewModel>().ReverseMap();
-            CreateMap<StorePlan, StorePlanViewModel>().ReverseMap();
+            CreateMap<Store, StoreViewModel>().ReverseMap();
+            CreateMap<UserType, UserTypeViewModel>().ReverseMap();
         }
     }
 }

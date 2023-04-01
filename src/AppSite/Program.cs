@@ -30,7 +30,9 @@ builder.Services.AddHttpContextAccessor();
 //builder.Services.AddDbContext<TicketupContext>(opt => opt.UseInMemoryDatabase("Database"));
 
 //IoC
-IoCConfiguration.Configure(builder.Services);
+IoCConfiguration.ConfigureRepositories(builder.Services);
+IoCConfiguration.ConfigureServices(builder.Services);
+IoCConfiguration.ConfigureProxies(builder.Services);
 
 var app = builder.Build();
 

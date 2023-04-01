@@ -2,7 +2,7 @@
 using AppSite.ViewModels;
 using AutoMapper;
 using Business.Entities;
-using Business.Repositories;
+using Business.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppSite.Controllers

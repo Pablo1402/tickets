@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Repositories
+namespace Business.Interfaces.Repositories
 {
     public interface IStorePlanRepository
     {

@@ -1,6 +1,6 @@
 ﻿using AppSite.Helpers;
 using AppSite.ViewModels;
-using Business.Repositories;
+using Business.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
