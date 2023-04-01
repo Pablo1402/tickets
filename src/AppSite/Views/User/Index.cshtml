@@ -1,7 +1,7 @@
-﻿@model IEnumerable<AppSite.ViewModels.StoreViewModel>
+﻿@model IEnumerable<AppSite.ViewModels.UserViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Usuários | Index";
 }
 
 
@@ -26,7 +26,7 @@
         <div class="col-md-12 col-sm-12  ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Lojas | Lista</h2>
+                    <h2>Usuários | Lista</h2>
                     <ul class="nav navbar-right panel_toolbox">
                          <li>
                             <a asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i> Adicionar</a>
@@ -50,14 +50,7 @@
                                     @Html.DisplayNameFor(model => model.CreateDate)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Active)
-                                </th>
-                                 <th>
-                                    @Html.DisplayNameFor(model => model.Image)
-                                </th>
-                                 <th>
-                                    
-                                    @Html.DisplayNameFor(model => model.StorePlan.Name)
+                                    @Html.DisplayNameFor(model => model.UserTypeId)
                                 </th>
                                 <th></th>
                             </tr>
@@ -76,20 +69,7 @@
                                         @Html.DisplayTextFor(modelItem => item.CreateDate)
                                     </td>
                                     <td>
-                                        @if (@item.Active)
-                                        {
-                                            <input type="checkbox" class="flat" readonly checked>
-                                        }
-                                        else
-                                        {
-                                            <input type="checkbox" class="flat" readonly>
-                                        }
-                                    </td>
-                                      <td>
-                                        @Html.DisplayTextFor(modelItem => item.Image)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StorePlan.Name)
+                                        @Html.DisplayTextFor(modelItem => item.UserType.Name)
                                     </td>
                                     <td>
                                          <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Editar"> <i class="fa fa-edit"></i> </a>

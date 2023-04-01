@@ -11,6 +11,7 @@ namespace AppSite.Config
             CreateMap<Store, StoreViewModel>().ReverseMap();
             CreateMap<Store, StoreViewModel>().ReverseMap();
             CreateMap<UserType, UserTypeViewModel>().ReverseMap();
+            CreateMap<User, UserViewModel>().ReverseMap();
         }
     }
 }

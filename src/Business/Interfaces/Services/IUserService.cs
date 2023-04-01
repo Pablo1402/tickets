@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Interfaces.Repositories
+namespace Business.Interfaces.Services
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         Task<User> GetByLogin(string login);
         Task<User> GetByIdAsync(Guid id);

@@ -1,14 +1,14 @@
-﻿@model AppSite.ViewModels.StoreViewModel
+﻿@model AppSite.ViewModels.UserViewModel
 
 @{
-    ViewData["Title"] = "Lojas | Nova";
+    ViewData["Title"] = "Usuários | Nova";
 }
 
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Lojas</h3>
+                <h3>Usuários</h3>
             </div>
         </div>
         <br />
@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Lojas | Criar</h2>
+                        <h2>Usuários | Criar</h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -46,30 +46,33 @@
                             </div>
 
                             <div class="item form-group">
-                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Image">
-                                    <label asp-for="Image" class="control-label"></label>
+                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="UserTypeId">
+                                    <label asp-for="UserTypeId" class="control-label"></label>
                                 </label>
                                 <div class="col-md-11 col-sm-11 form-control border-0 ">
-                                    <input asp-for="Image" class="form-control" />
-                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                    <select asp-for="UserTypeId" class="form-control" asp-items="ViewBag.UserTypeId"></select>
+                                    <span asp-validation-for="UserTypeId" class="text-danger"></span>
                                 </div>
                             </div>
+
+
                             <div class="item form-group">
-                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Active">
-                                    <label asp-for="Active" class="control-label"></label>
-                                </label>
-                                <div class="col-md-1 col-sm-1 form-control border-0 ">
-                                    <input asp-for="Active" class="flat " />
-                                    <span asp-validation-for="Active" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="StorePlan">
-                                    <label asp-for="StorePlanId" class="control-label"></label>
+                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Login">
+                                    <label asp-for="Login" class="control-label"></label>
                                 </label>
                                 <div class="col-md-11 col-sm-11 form-control border-0 ">
-                                    <select asp-for="StorePlanId" class="form-control" asp-items="ViewBag.StorePlanId"></select>
-                                    <span asp-validation-for="StorePlanId" class="text-danger"></span>
+                                    <input asp-for="Login" class="form-control" />
+                                    <span asp-validation-for="Login" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-1 col-sm-1 " asp-for="Password">
+                                    <label asp-for="Password" class="control-label"></label>
+                                </label>
+                                <div class="col-md-11 col-sm-11 form-control border-0 ">
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                             </div>
 

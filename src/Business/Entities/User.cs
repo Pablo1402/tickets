@@ -12,16 +12,13 @@ namespace Business.Entities
             ,string name
             , string login
             , string email
-            , string password
-            , Guid storeId)
+            , string password)
         {
             UserTypeId = userTypeId;
             Name = name;
             Login = login;
             Email = email;
             Password = password;
-            CreateDate = DateTime.Now;
-            StoreId = storeId;
         }
 
         public Guid UserTypeId { get; private set; }
@@ -37,6 +34,9 @@ namespace Business.Entities
         public Store Store { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
+
+        public void setDateCreate(DateTime createDate) => this.CreateDate = createDate;
+        public void setStoreId(Guid storeId) => this.StoreId= storeId;
     }
 
 }

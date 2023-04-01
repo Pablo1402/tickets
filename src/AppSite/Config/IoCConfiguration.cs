@@ -23,6 +23,7 @@ namespace AppSite.Config
         {
             services.AddTransient<ICookieService, CookieService>();
             services.AddScoped<IUserTypeService, UserTypeService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
 
         }
