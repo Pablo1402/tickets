@@ -39,6 +39,7 @@ namespace Data.Repository
         {
             return await _context.Users
                 .Include(x => x.UserType)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 

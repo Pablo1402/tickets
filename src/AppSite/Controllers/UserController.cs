@@ -51,65 +51,67 @@ namespace AppSite.Controllers
             user.setDateCreate(DateTime.Now);
             user.setStoreId(new Guid(User?.Claims.FirstOrDefault(x => x.Type == "StoreId")?.Value));
             await _service.CreateAsync(user );
-            TempData["success"] = "Usuario salvo com sucesso";
+            TempData["success"] = "Usuario salvo com sucesso!";
             return RedirectToAction(nameof(Index));
         }
 
-        //public async Task<IActionResult> Edit(Guid id)
-        //{
-        //    var store = await _repository.GetById(id);
-        //    if (store == null)
-        //        return NotFound();
-        //    ViewData["StorePlanId"] = new SelectList(await _storePlanRepository.GetAll(), "Id", "Name");
-        //    return View(_mapper.Map<StoreViewModel>(store));
-        //}
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var user = await _service.GetByIdAsync(id);
+            if (user == null)
+                return NotFound();
+            ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+            return View(_mapper.Map<UserViewModel>(user));
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(Guid id, StoreViewModel storeViewModel)
-        //{
-        //    if (id != storeViewModel.Id)
-        //        return NotFound();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, UserViewModel userViewModel)
+        {
+            if (id != userViewModel.Id)
+                return NotFound();
 
-        //    var store = await _repository.GetById(id);
-        //    if (store == null)
-        //        return NotFound();
+            var user = await _service.GetByIdAsync(id);
+            if (user == null)
+                return NotFound();
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        ViewData["StorePlanId"] = new SelectList(await _storePlanRepository.GetAll(), "Id", "Name");
-        //        return View(storeViewModel);
-        //    }
+            if (!ModelState.IsValid)
+            {
+                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+                return View(userViewModel);
+            }
 
-        //    var storeUpdate = _mapper.Map<Store>(storeViewModel);
-        //    storeUpdate.CreateDate = store.CreateDate;
-        //    await _repository.Update(storeUpdate);
+            var userUpdate = _mapper.Map<User>(userViewModel);
+            userUpdate.setDateCreate(user.CreateDate);
+            userUpdate.setStoreId(new Guid(User?.Claims.FirstOrDefault(x => x.Type == "StoreId")?.Value));
+            await _service.UpdateAsync(userUpdate);
+            TempData["success"] = "Usuario atualizado com sucesso!";
+            return RedirectToAction(nameof(Index));
 
-        //    return RedirectToAction(nameof(Index));
+        }
 
-        //}
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var user = await _service.GetByIdAsync(id);
+            if (user == null)
+                return NotFound();
 
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    var store = await _repository.GetById(id);
-        //    if (store == null)
-        //        return NotFound();
+            return View(_mapper.Map<UserViewModel>(user));
+        }
 
-        //    return View(_mapper.Map<StoreViewModel>(store));
-        //}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var user = await _service.GetByIdAsync(id);
+            if (user == null)
+                return NotFound();
+            if (user != null)
+                await _service.DeleteAsync(user);
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(Guid id)
-        //{
-        //    var store = await _repository.GetById(id);
-        //    if (store == null)
-        //        return NotFound();
-        //    if (store != null)
-        //        await _repository.Delete(store);
-
-        //    return RedirectToAction(nameof(Index));
-        //}
+            TempData["success"] = "Usuario removido com sucesso!";
+            return RedirectToAction(nameof(Index));
+        }
 
         //public async Task<IActionResult> Details(Guid? id)
         //{
