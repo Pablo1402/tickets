@@ -14,6 +14,7 @@ namespace AppSite.Config
             services.AddScoped<IStorePlanRepository, StorePlanRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserTypeRepository, UserTypeRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
 
             return services;
 
@@ -24,6 +25,7 @@ namespace AppSite.Config
             services.AddTransient<ICookieService, CookieService>();
             services.AddScoped<IUserTypeService, UserTypeService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IClientService, ClientService>();
             return services;
 
         }

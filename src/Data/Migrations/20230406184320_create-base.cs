@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class initialbase : Migration
+    public partial class createbase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace Data.Migrations
                 name: "CampainConfigurationTypes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
@@ -25,9 +25,9 @@ namespace Data.Migrations
                 name: "StorePlans",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    Active = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace Data.Migrations
                 name: "UserTypes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false)
                 },
                 constraints: table =>
@@ -50,13 +50,13 @@ namespace Data.Migrations
                 name: "Stores",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(200)", nullable: false),
                     Email = table.Column<string>(type: "varchar(400)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    Active = table.Column<bool>(type: "INTEGER", nullable: false),
                     Image = table.Column<string>(type: "varchar(100)", nullable: false),
-                    StorePlanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    StorePlanId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,14 +73,14 @@ namespace Data.Migrations
                 name: "Campain",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(200)", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    StoreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
-                    CampainConfigurationTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    QuantityTickets = table.Column<int>(type: "int", nullable: true)
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    StoreId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Active = table.Column<bool>(type: "INTEGER", nullable: false),
+                    CampainConfigurationTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    QuantityTickets = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -103,10 +103,10 @@ namespace Data.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StoreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    StoreId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Whatsapp = table.Column<string>(type: "varchar(20)", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    BirthDate = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -123,14 +123,14 @@ namespace Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "varchar(200)", nullable: false),
                     Login = table.Column<string>(type: "varchar(400)", nullable: false),
                     Email = table.Column<string>(type: "varchar(400)", nullable: false),
                     Password = table.Column<string>(type: "varchar(200)", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StoreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    StoreId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,12 +153,12 @@ namespace Data.Migrations
                 name: "ClientCampains",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Paid = table.Column<bool>(type: "bit", nullable: false),
-                    PaidDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CampainId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Paid = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PaidDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    ClientId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CampainId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -180,12 +180,12 @@ namespace Data.Migrations
                 name: "Tickets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClientCampainId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sequence = table.Column<int>(type: "int", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Note = table.Column<string>(type: "varchar(max)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ClientCampainId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Sequence = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Note = table.Column<string>(type: "varchar(4000)", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

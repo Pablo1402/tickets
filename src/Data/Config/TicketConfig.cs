@@ -19,7 +19,7 @@ namespace Data.Config
 
             builder.Property(x => x.Note)
            .IsRequired()
-           .HasColumnType("varchar(max)");
+           .HasColumnType("varchar(4000)");
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Tickets)

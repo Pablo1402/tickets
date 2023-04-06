@@ -10,11 +10,16 @@ namespace Data.Context
 {
     public class TicketupContext : DbContext
     {
-        public TicketupContext( DbContextOptions options) : base(options)
-        {
+        //sql server
+        //public TicketupContext( DbContextOptions options) : base(options)
+        //{
 
-        }
+        //}
 
+
+        protected override void OnConfiguring(
+           DbContextOptionsBuilder optionsBuilder)
+           => optionsBuilder.UseSqlite(connectionString: "DataSource=app.db;Cache=Shared");
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<Store> Stores { get; set; }

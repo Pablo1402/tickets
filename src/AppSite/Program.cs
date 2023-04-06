@@ -17,9 +17,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<TicketupContext>(options =>
-    options.UseSqlServer(connectionString));
 
+//builder.Services.AddDbContext<TicketupContext>(options =>
+//    options.UseSqlServer(connectionString));
+
+builder.Services.AddDbContext<TicketupContext>();
 
 
 
