@@ -50,6 +50,8 @@ using (var scope = app.Services.CreateScope())
 { 
     var dataContext = scope.ServiceProvider.GetRequiredService<TicketupContext>();
     dataContext.Database.Migrate();
+    dataContext.ExecuteInitializer();
+    
 }
 
 app.UseHttpsRedirection();
