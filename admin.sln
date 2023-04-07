@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSite", "src\AppSite\AppSite.csproj", "{570FE386-169C-4525-B01A-86386E599CC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSite", "src\AppSite\AppSite.csproj", "{570FE386-169C-4525-B01A-86386E599CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "src\Business\Business.csproj", "{77E71619-E51C-4F29-9316-29612948E7D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "src\Business\Business.csproj", "{77E71619-E51C-4F29-9316-29612948E7D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.csproj", "{A2AFAE43-C4F2-42C8-990B-CD6CD60B0565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "src\Data\Data.csproj", "{A2AFAE43-C4F2-42C8-990B-CD6CD60B0565}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proxies", "Proxies", "{D6AD0239-60A4-4F4B-9365-70AF593C8608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsMessageProxie", "SmsMessageProxie\SmsMessageProxie.csproj", "{6F907B62-FB84-4956-997D-1D9BEC6BFA3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{A2AFAE43-C4F2-42C8-990B-CD6CD60B0565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2AFAE43-C4F2-42C8-990B-CD6CD60B0565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2AFAE43-C4F2-42C8-990B-CD6CD60B0565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F907B62-FB84-4956-997D-1D9BEC6BFA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F907B62-FB84-4956-997D-1D9BEC6BFA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F907B62-FB84-4956-997D-1D9BEC6BFA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F907B62-FB84-4956-997D-1D9BEC6BFA3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6F907B62-FB84-4956-997D-1D9BEC6BFA3A} = {D6AD0239-60A4-4F4B-9365-70AF593C8608}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {132D030C-815B-4D1A-BBE4-BB240B9DB665}

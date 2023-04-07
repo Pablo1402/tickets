@@ -47,6 +47,15 @@ namespace AppSite.Controllers
                 ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
                 return View(userViewModel);
             }
+
+            var userLoginExistis = _service.GetByLogin(userViewModel.Login);
+            if (userLoginExistis != null)
+            {
+                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+                TempData["warning"] = "Já existe um usuário com este login!";
+                return View(userViewModel);
+            }
+
             var user = _mapper.Map<User>(userViewModel);
             user.setDateCreate(DateTime.Now);
             user.setStoreId(new Guid(User?.Claims.FirstOrDefault(x => x.Type == "StoreId")?.Value));

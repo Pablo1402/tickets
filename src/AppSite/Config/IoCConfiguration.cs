@@ -1,8 +1,10 @@
 ﻿using AppSite.Helpers;
+using Business.Interfaces.Proxies;
 using Business.Interfaces.Repositories;
 using Business.Interfaces.Services;
 using Business.Services;
 using Data.Repository;
+using SmsMessageProxie;
 
 namespace AppSite.Config
 {
@@ -32,6 +34,7 @@ namespace AppSite.Config
 
         public static IServiceCollection ConfigureProxies(this IServiceCollection services)
         {
+            services.AddScoped<ISmsMessageProxie, MessageTwilio>();
             return services;
 
         }

@@ -1,4 +1,5 @@
 ﻿using Business.Entities;
+using Business.Interfaces.Proxies;
 using Business.Interfaces.Repositories;
 using Business.Interfaces.Services;
 using System;
@@ -12,15 +13,18 @@ namespace Business.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _repositorio;
+        private readonly ISmsMessageProxie _smsProxie;
 
-        public UserService(IUserRepository repositorio)
+        public UserService(IUserRepository repositorio, ISmsMessageProxie smsProxie)
         {
             _repositorio = repositorio;
+            _smsProxie = smsProxie;
         }
 
         public async Task CreateAsync(User user)
         {
             await _repositorio.CreateAsync(user);
+            await _smsProxie.SendMessage("Novo usuário criado","+5534996681740");
         }
 
         public async Task DeleteAsync(User user)
