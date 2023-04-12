@@ -41,6 +41,11 @@ namespace Data.Repository
             return await _context.UserTypes.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<List<UserType>> GetDropdownAsync(List<string> names)
+        {
+            return await _context.UserTypes.Where(x => names.Contains(x.Name) ).ToListAsync();
+        }
+
         public async Task UpdateAsync(UserType userType)
         {
             _context.UserTypes.Update(userType);

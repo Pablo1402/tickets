@@ -2,6 +2,7 @@
 using AppSite.ViewModels;
 using AutoMapper;
 using Business.Entities;
+using Business.Enumerators;
 using Business.Interfaces.Repositories;
 using Business.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -31,10 +32,23 @@ namespace AppSite.Controllers
             return View(_mapper.Map<IEnumerable<UserViewModel>>(users));
         }
 
+        private List<string> GetUserTypeNames()
+        {
+            var names = new List<string> 
+            {
+                UserTypeEnum.USER.ToString(),
+                UserTypeEnum.CLIENT.ToString(),
+                UserTypeEnum.ADMIN.ToString(),
+            };
+            if(User.IsInRole(UserTypeEnum.SYSTEM.ToString()))
+                names.Add(UserTypeEnum.SYSTEM.ToString());
+            return names;
+
+        }
 
         public async Task<IActionResult> Create()
         {
-            ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+            ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetDropdownAsync(GetUserTypeNames()), "Id", "Name");
             return View();
         }
 
@@ -44,14 +58,14 @@ namespace AppSite.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetDropdownAsync(GetUserTypeNames()), "Id", "Name");
                 return View(userViewModel);
             }
 
             var userLoginExistis = _service.GetByLogin(userViewModel.Login);
             if (userLoginExistis != null)
             {
-                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetDropdownAsync(GetUserTypeNames()), "Id", "Name");
                 TempData["warning"] = "Já existe um usuário com este login!";
                 return View(userViewModel);
             }
@@ -69,7 +83,7 @@ namespace AppSite.Controllers
             var user = await _service.GetByIdAsync(id);
             if (user == null)
                 return NotFound();
-            ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+            ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetDropdownAsync(GetUserTypeNames()), "Id", "Name");
             return View(_mapper.Map<UserViewModel>(user));
         }
 
@@ -86,7 +100,7 @@ namespace AppSite.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetAllAsync(), "Id", "Name");
+                ViewData["UserTypeId"] = new SelectList(await _userTypeService.GetDropdownAsync(GetUserTypeNames()), "Id", "Name");
                 return View(userViewModel);
             }
 

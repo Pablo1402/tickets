@@ -14,5 +14,6 @@ namespace Business.Interfaces.Repositories
         Task CreateAsync(UserType userType);
         Task UpdateAsync(UserType userType);
         Task DeleteAsync(UserType userType);
+        Task<List<UserType>> GetDropdownAsync(List<string> names);
     }
 }

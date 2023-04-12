@@ -11,6 +11,7 @@ namespace Business.Interfaces.Services
     {
         Task<UserType> GetByIdAsync(Guid id);
         Task<List<UserType>> GetAllAsync();
+        Task<List<UserType>> GetDropdownAsync(List<string> names);
         Task CreateAsync(UserType userType);
         Task UpdateAsync(UserType userType);
         Task DeleteAsync(UserType userType);

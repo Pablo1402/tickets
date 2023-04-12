@@ -33,6 +33,11 @@ namespace Business.Services
             return await _repository.GetByIdAsync(id);
         }
 
+        public async Task<List<UserType>> GetDropdownAsync(List<string> names)
+        {
+            return await _repository.GetDropdownAsync(names) ;
+        }
+
         public async Task UpdateAsync(UserType userType)
         {
             await _repository.UpdateAsync(userType);

@@ -24,7 +24,7 @@ namespace Business.Services
         public async Task CreateAsync(User user)
         {
             await _repositorio.CreateAsync(user);
-            await _smsProxie.SendMessage("Novo usuário criado","+5534996681740");
+            //await _smsProxie.SendMessage("Novo usuário criado","+5534996681740");
         }
 
         public async Task DeleteAsync(User user)
